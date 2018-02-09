@@ -3,3 +3,8 @@
 
 * :bar_chart:直接打开demo.html就可以看到示例
 
+* 使用框架
+    * js-xlsx
+    * vue2.2.4
+    * jquery
+
