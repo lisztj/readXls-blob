@@ -8,3 +8,6 @@
     * vue2.2.4
     * jquery
 
+* [参考示例](https://www.jianshu.com/p/74d405940305)
+* [HTML5 文件域+FileReader 分段读取文件并上传到服务器](https://www.cnblogs.com/tianma3798/p/5845291.html)
+* [js上传的FormData与Blob](http://blog.csdn.net/sinat_31057219/article/details/70243451)
