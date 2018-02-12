@@ -86,19 +86,19 @@
 
     <script>
         function sentComment() {
-            var url = buffs;
+            // var url = buffs;
             var params = {
                 "mediaType": 3
             };
-            var audioBase64Data = buffs;
+            // var audioBase64Data = buffs;
             //获取图片的base64
 
             //创建formData对象
             var formData = new FormData();
             //添加图片的blob
-            if (audioBase64Data) {
+            if (buffs) {
                 // var blobBin = dataURLtoBlob(audioBase64Data);
-                var blobBin = new Blob([audioBase64Data]); // 传入一个合适的MIME类型
+                var blobBin = new Blob([buffs]); // 传入一个合适的MIME类型
                 var fileType = blobBin.type.split("/")[1];
                 params.fileType = fileType;
                 var fileN = ImportFile.name;
