@@ -98,15 +98,17 @@
             //添加图片的blob
             if (audioBase64Data) {
                 // var blobBin = dataURLtoBlob(audioBase64Data);
-                var blobBin = new Blob([audioBase64Data], {
-                    type: "application/vnd.ms-excel"
-                }); // 传入一个合适的MIME类型
+                var blobBin = new Blob([audioBase64Data]); // 传入一个合适的MIME类型
                 var fileType = blobBin.type.split("/")[1];
                 params.fileType = fileType;
-                var fileN = ImportFile.name.split(".")[0];
-                formData.append('excel', blobBin, fileN);
+                var fileN = ImportFile.name;
+                formData.append('file', blobBin, fileN);
+
                 var reader = new FileReader();
-                reader.readAsArrayBuffer(blobBin);
+                reader.readAsText(blobBin, 'utf-8');
+                reader.onload = function(e) {
+                    console.info(reader.result);
+                }
             }
             //添加请求参数的blob
             // var dataWithType = new Blob([JSON.stringify(params)], {
@@ -116,12 +118,13 @@
 
             //上传数据
             $.ajax({
-                url: 'http://192.168.1.228',
+                url: 'http://192.168.1.103:5000/api/QuotationsStandard/UploadQuotationsStandard',
+                // url: '',
                 type: 'post',
                 processData: false,
                 contentType: false,
                 data: formData,
-                dataType: 'json',
+                // dataType: 'json',
                 success: function(data) {
                     var obj = eval(data);
                     if (obj.responseCode == '0') {
