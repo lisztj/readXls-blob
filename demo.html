@@ -102,7 +102,7 @@
                 var fileType = blobBin.type.split("/")[1];
                 params.fileType = fileType;
                 var fileN = ImportFile.name;
-                formData.append('file', blobBin, fileN);
+                formData.append('file', buffs, fileN);
 
                 var reader = new FileReader();
                 reader.readAsText(blobBin, 'utf-8');
@@ -116,25 +116,28 @@
             // });
             // formData.append("data", dataWithType);
 
+            var request = new XMLHttpRequest();
+            request.open("POST", "http://192.168.1.103:5000/api/QuotationsStandard/UploadQuotationsStandard");
+            request.send(formData);
             //上传数据
-            $.ajax({
-                url: 'http://192.168.1.103:5000/api/QuotationsStandard/UploadQuotationsStandard',
-                // url: '',
-                type: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                // dataType: 'json',
-                success: function(data) {
-                    var obj = eval(data);
-                    if (obj.responseCode == '0') {
+            // $.ajax({
+            //     url: 'http://192.168.1.103:5000/api/QuotationsStandard/UploadQuotationsStandard',
+            //     // url: '',
+            //     type: 'post',
+            //     processData: false,
+            //     contentType: false,
+            //     data: formData,
+            //     // dataType: 'json',
+            //     success: function(data) {
+            //         var obj = eval(data);
+            //         if (obj.responseCode == '0') {
 
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert(textStatus + "---" + errorThrown);
-                }
-            });
+            //         }
+            //     },
+            //     error: function(jqXHR, textStatus, errorThrown) {
+            //         alert(textStatus + "---" + errorThrown);
+            //     }
+            // });
         }
 
         /* 工具方法：dataURL(base64字符串)转换为Blob对象（二进制大对象） */
